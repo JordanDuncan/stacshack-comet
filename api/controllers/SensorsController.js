@@ -18,7 +18,7 @@ module.exports = {
 	changeLight: function(req, res) {
 		Sensors.findOne({name: req.query.name}).exec(function(err,ret){
 			if(err) return res.send(err);
-			Sensors.update({name: req.query.name}, {temp:parseFloat(req.query.light)}).exec(function(err,ret){
+			Sensors.update({name: req.query.name}, {light:parseFloat(req.query.light)}).exec(function(err,ret){
 				if(err) return res.send(err);
 				return res.send(ret);
 			});
