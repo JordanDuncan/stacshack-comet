@@ -14,7 +14,7 @@ module.exports = {
 				return res.send(ret);
 			});
 		});
-	}
+	},
 	changeLight: function(req, res) {
 		Sensors.findOne({name: req.query.name}).exec(function(err,ret){
 			if(err) return res.send(err);
@@ -23,7 +23,7 @@ module.exports = {
 				return res.send(ret);
 			});
 		});
-	}
+	},
 	changeTime: function(req,res) {
 		Sensors.findOne({name: "global").exec(function(err,ret){
 			if(err) return res.send(err);
