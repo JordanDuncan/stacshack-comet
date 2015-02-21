@@ -28,7 +28,7 @@
 			function timeSubmit() {
 				var timeMins = timeStringToNum($('#globaltime').val());
 				alert(timeMins);
-				var urlT = "../sensors/changeTime?time=" + timeMins;
+				var urlT = "../sensors/changeTime?timeIn=" + timeMins;
 				$.get(urlT,function(dataT) {
 					alert(dataT);
 				});
