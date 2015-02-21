@@ -44,6 +44,10 @@ module.exports.routes = {
     view: 'debug'
   },
 
+  '/ihouse': {
+    view: 'ihouse'
+  },
+
   'get /userGet': 'UserController.test'
 
   /***************************************************************************
