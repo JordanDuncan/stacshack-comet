@@ -25,7 +25,7 @@ module.exports = {
 		});
 	},
 	changeTime: function(req,res) {
-		Sensors.findOne({name: "global").exec(function(err,ret){
+		Sensors.findOne({name: "global"}).exec(function(err,ret){
 			if(err) return res.send(err);
 			Sensors.update({name: "global"}, {time:parseFloat(req.query.time)}).exec(function(err,ret){
 				if(err) return res.send(err);
