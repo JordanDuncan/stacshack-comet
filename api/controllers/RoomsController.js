@@ -19,7 +19,7 @@ module.exports = {
                 Rooms.update({name: ops[i][0]}, newRet).exec(function(err,ret){
                     if(err) return res.send(err);
                     return true;
-                }
+                });
             });
         }
     }
