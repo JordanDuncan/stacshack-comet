@@ -3,7 +3,7 @@
 		Interactive house
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript">
-			var timeStringToNum = function (t) {
+			function timeStringToNum(t) {
 				hourmin = t.split(":");
 				if (hourmin.length != 2){
 					return false;
@@ -13,7 +13,7 @@
 				minutes = timenums[0] * 60 + timenums[1];
 
 				return minutes;
-			};
+			}
 
 			function thisSubmit(target, prefix) {
 				var urlL = "../sensors/changeLight?name=" + target + "&light=" + $('#'+prefix+'Light').val();
@@ -27,6 +27,7 @@
 
 			function timeSubmit() {
 				var timeMins = timeStringToNum($('#globaltime').val());
+				alert(timeMins);
 				var urlT = "../sensors/changeTime?time=" + timeMins;
 				$.get(urlT,function(dataT) {
 					alert(dataT);
@@ -76,6 +77,6 @@
 		<p> 
 			Time
 				Time: <input type="text" id="globaltime"><br>
-				<input type="button" onClick="timeSubmit" value="Submit">
+				<input type="button" onClick="timeSubmit()" value="Submit">
 		</p>
 </html>
