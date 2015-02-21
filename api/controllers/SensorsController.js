@@ -27,7 +27,7 @@ module.exports = {
 	changeTime: function(req,res) {
 		Sensors.findOne({name: "time"}).exec(function(err,ret){
 			if(err) return res.send(err);
-			Sensors.update({name: "time"}, {time:parseInt(req.query.time)}).exec(function(err,ret){
+			Sensors.update({name: "time"}, {time:parseInt(req.query.timeIn)}).exec(function(err,ret){
 				if(err) return res.send(err);
 				return res.send(ret);
 			});
