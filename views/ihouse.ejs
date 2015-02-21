@@ -16,8 +16,8 @@
 			};
 
 			function thisSubmit(target, prefix) {
-				var urlL = "http://178.62.259.194:1337/sensors/changeLight?name=" + target + "&light=" + $('#'+prefix+'Light').val();
-				var urlT = "http://178.62.259.194:1337/sensors/changeTemp?name=" + target + "&temp=" + $('#'+prefix+'Light').val();
+				var urlL = "../sensors/changeLight?name=" + target + "&light=" + $('#'+prefix+'Light').val();
+				var urlT = "../sensors/changeTemp?name=" + target + "&temp=" + $('#'+prefix+'Light').val();
 				$.get(urlL,function(dataL) {
 					$.get(urlT,function(dataT) {
 						alert(dataL + dataT);
@@ -27,7 +27,7 @@
 
 			function timeSubmit() {
 				var timeMins = timeStringToNum($('#globaltime').val());
-				var urlT = "http://178.62.259.194:1337/sensors/changeTime?time=" + timeMins;
+				var urlT = "../sensors/changeTime?time=" + timeMins;
 				$.get(urlT,function(dataT) {
 					alert(dataT);
 				});
