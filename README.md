@@ -7,7 +7,14 @@ This is our empty readme file...
 ####Critical
 
 ####High Priority
+House config settings screen
+rooms predefined
+appls predefined
+rule generator
+sensor modifier
+virtual light/heat changes
 
 ####Low Priority
+appliance state changer
 
 ####Trivial
