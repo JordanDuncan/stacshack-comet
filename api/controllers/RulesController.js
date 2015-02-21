@@ -5,6 +5,17 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
+function httpReq(type, url, callback){
+	var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 ) {
+           callback();
+        }
+    }
+
+    xmlhttp.open(type, url, true);
+    xmlhttp.send();
+}
  
 var checkAndMod = {
 	'time': function(terms,ops){
@@ -12,20 +23,9 @@ var checkAndMod = {
 		var condMet = false;
 		
 		if(condMet){
-			for(var i in ops){
-				Rooms.findOne({name: ops[i][0]}).exec(function(err,ret){
-					if(err) return res.send(err);
-					
-					var newRet = JSON.parse(JSON.stringify(ret));
-					newRet.appl[ops[i][1]].state = ops[i][2];
-					
-					Rooms.update({name: ops[i][0]}, newRet).exec(function(err,ret){
-						if(err) return res.send(err);
-						return true;
-					}
-				});
-
-			}
+			httpReq("GET", "../../rooms/update?ops="+JSON.stringify(ops), function(){
+		    	return true;
+		    })
 		} else {
 			return false;
 		}
@@ -36,20 +36,9 @@ var checkAndMod = {
 			if(ret.temp > terms.min && ret.temp < terms.max) condMet = true; 
 		
 			if(condMet){
-				for(var i in ops){
-					Rooms.findOne({name: ops[i][0]}).exec(function(err,ret){
-						if(err) return res.send(err);
-						
-						var newRet = JSON.parse(JSON.stringify(ret));
-						newRet.appl[ops[i][1]].state = ops[i][2];
-						
-						Rooms.update({name: ops[i][0]}, newRet).exec(function(err,ret){
-							if(err) return res.send(err);
-							return true;
-						}
-					});
-
-				}
+				httpReq("GET", "../../rooms/update?ops="+JSON.stringify(ops), function(){
+			    	return true;
+			    })
 			} else {
 				return false;
 			}
@@ -61,20 +50,9 @@ var checkAndMod = {
 			if(ret.light > terms.min && ret.light < terms.max) condMet = true; 
 		
 			if(condMet){
-				for(var i in ops){
-					Rooms.findOne({name: ops[i][0]}).exec(function(err,ret){
-						if(err) return res.send(err);
-						
-						var newRet = JSON.parse(JSON.stringify(ret));
-						newRet.appl[ops[i][1]].state = ops[i][2];
-						
-						Rooms.update({name: ops[i][0]}, newRet).exec(function(err,ret){
-							if(err) return res.send(err);
-							return true;
-						}
-					});
-
-				}
+			    httpReq("GET", "../../rooms/update?ops="+JSON.stringify(ops), function(){
+			    	return true;
+			    })
 			} else {
 				return false;
 			}
