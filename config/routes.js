@@ -40,6 +40,10 @@ module.exports.routes = {
     view: 'house'
   },
 
+  '/debug': {
+    view: 'debug'
+  },
+
   'get /userGet': 'UserController.test'
 
   /***************************************************************************
