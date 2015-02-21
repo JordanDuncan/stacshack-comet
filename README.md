@@ -1,6 +1,6 @@
 #app name
-##Team C.O.M.E.T (Scott Maxwell & Jordan Duncan)
 ###STACShack 2015
+**Team C.O.M.E.T (Scott Maxwell & Jordan Duncan)**
 This is our empty readme file...
 
 ##Todo List
