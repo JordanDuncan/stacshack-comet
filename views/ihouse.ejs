@@ -3,6 +3,18 @@
 		Interactive house
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript">
+			window.onload = function subscribeAndListen(){
+			// When the document loads, send a request to users.testSocket
+			// The controller code will subscribe you to all of the 'users' model instances (records)
+				socket.get('/sensors');
+
+				// Listen for the event called 'user'
+				socket.on('sensors',function(obj){
+					alert(JSON.stringify(obj));
+				};
+				});
+			};
+
 			function fillVals(){
 				$.get("../sensors",function(data) {
 					alert(JSON.stringify(data));
