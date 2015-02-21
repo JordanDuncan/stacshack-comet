@@ -1,43 +1,77 @@
 <html>
 	<head> 
 		Interactive house
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			var timeStringToNum = function (t) {
+				hourmin = t.split(":");
+				if (hourmin.length != 2){
+					return false;
+				} 
+
+				timenums = hourmin.map( function (n) {return parseInt(n, 10)});
+				minutes = timenums[0] * 60 + timenums[1];
+
+				return minutes;
+			};
+
+			function thisSubmit(target, prefix) {
+				var urlL = "http://178.62.259.194:1337/sensors/changeLight?name=" + target + "&light=" + $('#'+prefix+'Light').val();
+				var urlT = "http://178.62.259.194:1337/sensors/changeTemp?name=" + target + "&temp=" + $('#'+prefix+'Light').val();
+				$.get(urlL,function(dataL) {
+					$.get(urlT,function(dataT) {
+						alert(dataL + dataT);
+					});
+				});
+			}
+
+			function timeSubmit() {
+				var timeMins = timeStringToNum($('#globaltime').val());
+				var urlT = "http://178.62.259.194:1337/sensors/changeTime?time=" + timeMins;
+				$.get(urlT,function(dataT) {
+					alert(dataT);
+				});
+			}
+
+		</script>
+
 	</head>
 	<body>
 		<p>
 			Living room <br>
 			  Light: <input type="text" id="lrLight"><br>
 			  Temperature: <input type="text" name="lrTemp"><br>
-			  <input type="button" onClick="lrSubmit" value="Submit">
+			  <input type="button" onClick="thisSubmit('livingroom', 'lr')" value="Submit">
 		</p>
 		<p>
 			Bathroom <br>
 				Light: <input type="text" id="bathLight"><br>
 				Temperature: <input type="text" name="bathTemp"><br>
-				<input type="button" onClick="bathSubmit" value="Submit">
+				<input type="button" onClick="thisSubmit('bathroom', 'bath')" value="Submit">
 		</p>
 		<p>
 			Kitchen <br>
 				Light: <input type="text" id="kitchenLight"><br>
 				Temperature: <input type="text" name="kitchenTemp"><br>
-				<input type="button" onClick="kitchenSubmit" value="Submit">
+				<input type="button" onClick="thisSubmit('kitchen', 'kitchen')" value="Submit">
 		</p>
 		<p>
 			Bedroom1 <br>
 				Light: <input type="text" id="br1Light"><br>
 				Temperature: <input type="text" name="br1Temp"><br>
-				<input type="button" onClick="br1Submit" value="Submit">
+				<input type="button" onClick="thisSubmit('bedroom1', 'br1')" value="Submit">
 		</p>
 		<p>
 			Bedroom2 <br>
 				Light: <input type="text" id="br2Light"><br>
 				Temperature: <input type="text" name="br2Temp"><br>
-				<input type="button" onClick="br2Submit" value="Submit">
+				<input type="button" onClick="thisSubmit('bedroom2', 'br2')" value="Submit">
 		</p>
 		<p>
 			Corridor
 				Light: <input type="text" id="corrLight"><br>
 				Temperature: <input type="text" name="corrTemp"><br>
-				<input type="button" onClick="corrSubmit" value="Submit">
+				<input type="button" onClick="thisSubmit('corridor', 'corr')" value="Submit">
 		</p>
 		<p> 
 			Time
