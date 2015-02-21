@@ -11,6 +11,7 @@ module.exports = {
 			if(err) return res.send(err);
 			Sensors.update({name: req.query.name}, {temp:parseFloat(req.query.temp)}).exec(function(err,ret){
 				if(err) return res.send(err);
+				ihouse.publishUpdate(ret, {value: "oink"})
 				return res.send(ret);
 			});
 		});
@@ -20,6 +21,7 @@ module.exports = {
 			if(err) return res.send(err);
 			Sensors.update({name: req.query.name}, {light:parseFloat(req.query.light)}).exec(function(err,ret){
 				if(err) return res.send(err);
+				ihouse.publishUpdate(ret, {value: "meow"})
 				return res.send(ret);
 			});
 		});
@@ -30,6 +32,7 @@ module.exports = {
 			var newTime = parseInt(req.query.timeIn);
 			Sensors.update({name: "time"}, {time:newTime}).exec(function(err,ret){
 				if(err) return res.send(err);
+				ihouse.publishUpdate(ret, {value: "blah"})
 				return res.send(ret);
 			});
 		});
