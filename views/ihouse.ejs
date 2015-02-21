@@ -17,7 +17,7 @@
 
 			function thisSubmit(target, prefix) {
 				var urlL = "../sensors/changeLight?name=" + target + "&light=" + $('#'+prefix+'Light').val();
-				var urlT = "../sensors/changeTemp?name=" + target + "&temp=" + $('#'+prefix+'Light').val();
+				var urlT = "../sensors/changeTemp?name=" + target + "&temp=" + $('#'+prefix+'Temp').val();
 				$.get(urlL,function(dataL) {
 					$.get(urlT,function(dataT) {
 						alert(dataL + dataT);
@@ -76,6 +76,6 @@
 		<p> 
 			Time
 				Time: <input type="text" id="globaltime"><br>
-				<input type="button" onClick="globaltimeSubmit" value="Submit">
+				<input type="button" onClick="timeSubmit" value="Submit">
 		</p>
 </html>
