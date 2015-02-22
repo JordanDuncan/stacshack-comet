@@ -1,0 +1,61 @@
+body {
+    background-color: #009688!important;
+    margin: 0;
+    width: 100%;
+    -webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s;
+}
+
+#cont {
+    width: 500px;
+    height: 630px;
+    margin: 80px auto 0 auto;
+    background-color: #EEE;
+    -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+    opacity:1;
+}
+
+#headBar {
+    width: 500px;
+    height: 80px;
+    padding: 17px 20px 15px 20px;
+    background-color: #03A9F4;
+    -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.2);
+    opacity:1;
+    color: white;
+    font-size: 32px;
+    font-weight: 300;
+    font-family: 'HelveticaNeue-Light';
+}
+/*
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;          
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;        
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;      
+}
+*/

@@ -1,83 +1,113 @@
-<html>
-	<head>
-		<style>
-				#header {
-					background-color:black;
-					color:white;
-					text-align:center;
-					padding:5px;
-				}
-				#nav {
-					line-height:30px;
-					background-color:#eeeeee;
-					height:300px;
-					width:100px;
-					float:left;
-					padding:5px;	      
-				}
-				#section {
-					width:350px;
-					float:left;
-					padding:10px;	 	 
-				}
-				#footer {
-					background-color:black;
-					color:white;
-					clear:both;
-					text-align:center;
-				   padding:5px;	 	 
-				}
-				</style>
-	</head>
-	<body>
-		<header>
-			<h1>Rules S_____</h1>
-		</header>
-		<nav>
-		<p>
-			Temperature now: 
-		</p>	
-		<p>
-			Time now: 
-		</p>	
-		<p>
-			Light now: 
-		</p>
-		
+<link type="text/css" href="../../css/ruleGen.css" rel="stylesheet">
+<link type="text/css" href='../../css/materialize.min.css' rel='stylesheet'/>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"> </script>
+<script src="js/materialize.min.js" type="text/javascript"> </script>
+<body>
+<div id="cont">
+	<div id="headBar">
+		Rule Setter
+	</div>
+	<div style="clear:both"></div>
+	<div class="row">
+		<form class="col s12">
+		    <div class="row">
+		    	<div class="input-field col s12">
+	        		<label>Room</label>
+					  <select style="margin: 40px 0 -30px 0" class="browser-default">
+					    <option value="" disabled selected>Choose your option</option>
+					    <option value="1">Option 1</option>
+					    <option value="2">Option 2</option>
+					    <option value="3">Option 3</option>
+					  </select>
+				</div>
+		    </div>
+		    <div class="row">
+		    	<div class="input-field col s12">
+	        		<label>Checks:</label>
+					  <select style="margin: 40px 0 -10px 0" class="browser-default">
+					    <option value="" disabled selected>Choose your option</option>
+					    <option value="time">Time</option>
+				  		<option value="light">Light</option>
+				  		<option value="temp">Temperature</option>
+					  </select>
+				</div>
+		    </div>
+		    <div class="row">
+		        <div class="input-field col s6">
+		        	<input id="min" type="number" class="validate">
+		        	<label for="min">Min</label>
+		        </div>
+		        <div class="input-field col s6">
+		        	<input id="max" type="number" class="validate">
+		        	<label for="max">Max</label>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="input-field col s12">
+		        	<input id="cmd" type="text" class="validate">
+		        	<label for="cmd">Command</label>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="input-field col s8">
 
-		</nav>
-		<section>
-		<h1>WTF</h1>
-		Temperature now:<br>
-		#insert temp here
-		
-		Light now:<br>
-		#insert light here<br>
-		
-		Time now:<br>
-		#insert time here<br>
+		        </div>
+		        <div class="input-field col s4">
+		        	<a class="waves-effect waves-light btn">Save</a>
+		        </div>
+		    </div>
+		</form>
+	</div>
+</div>
+<!--<div class="container">
+
+	<div class="jumbotron">
+	  <h1>iHouse Rule Setter</h1> 
+	  <p>Welcome home!<p> 
+	</div>
+
+	<div id="blah">
+		<div id="left">
+			<h4>Choose element:</h4>
+		    <ul class="general_menu">
+				<li id="temperatureIcon" onClick="pageTracker._trackPageview('/menu/sobre');"><a href="?pg=sobre" title="Temperature" class="mn_sobre" onClick="return false;">Temperature</a></li>
+				<li id="lightIcon" onClick="pageTracker._trackPageview('/menu/habilidades');"><a href="?pg=habilidades" title="Light" class="mn_habilidades" onClick="return false;">Light</a></li>
+				<li id="timeIcon" onClick="pageTracker._trackPageview('/menu/clientes');"><a href="?pg=clientes" title="Time" class="mn_clientes" onClick="return false;">Time</a></li>
+			</ul>
+
+			Temperature now:<br>
+			#insert temp here<br>
+
+			Light now:<br>
+			#insert light here<br>
+
+			Time now:<br>
+			#insert time here<br>
+		</div> 
+
+		<div id="right">
+			<section>
+				<h1>Room</h1>
+				
+				Select room:<br>
+				<select id="room">
+				</select>
+				<br><br>
+				Select variable:<br>
+				<select id="check">
+				  <option value="time">Time</option>
+				  <option value="light">Light</option>
+				  <option value="temp">Temperature</option>
+				</select>
+				<br>
+				<br>Set minimum value:<br>
+				<input type="text" name="MinimumValue" value="0"><br><br>
+				Set maximum value:<br>
+				<input type="text" name="MaximumValue" value="1"><br>
+				Command:<br>
+				<input type="button" value="Submit">
+			</section>
 		</div>
-
-		<h1>Room</h1>
-
-	
-		<select id="check">
-		  <option value="time">Time</option>
-		  <option value="light">Light</option>
-		  <option value="temp">Temperature</option>
-		</select>
-
-		MinimumValue:<br>
-		<input type="text" name="Minimum Value" value="Mickey"><br>
-		MaximumValue:<br>
-		<input type="text" name="Maximum Value" value="Mouse">
-		Command:<br>
-		<input type="button" value="Submit">
-		</section>
-
-		<footer>
-			Copyright © team C.O.M.E.T
-		</footer>
-
-	</body>	
-</html>
+	</div>
+</div>-->
+</body>

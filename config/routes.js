@@ -48,6 +48,10 @@ module.exports.routes = {
     view: 'debug'
   },
 
+  '/house/rules': {
+    view: 'ruleGen'
+  },
+
   'get /ihouse': 'SensorsController.ihouse',
 
   'get /userGet': 'UserController.test'
