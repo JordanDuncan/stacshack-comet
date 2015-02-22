@@ -4,43 +4,89 @@
 <link type="text/css" href='css/house.css' rel='stylesheet'/>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"> </script>
 <script src="js/materialize.min.js" type="text/javascript"> </script>
-<body>
+<script type="text/javascript">
+    function getSensors(){
+        $.get('../sensors',function(d){
+            for(var i in d){
+                if(d[i].name == 'time'){
+                    //$('#globaltime').val(String(d[i]['time']));
+                    continue;
+                }
+                $('#'+d[i].name+'T').text(String(d[i].temp) + 'ºC');
+                $('#'+d[i].name+'L').text(String((d[i].light*100)) + '%');
+            }
+        });
+    }
+
+    function getAppl(){
+        $.get('../sensors',function(d){
+            for(var i in d){
+                if(d[i].name == 'time'){
+                    //$('#globaltime').val(String(d[i]['time']));
+                    continue;
+                }
+                $('#'+d[i].name+'T').text(String(d[i].temp) + 'ºC');
+                $('#'+d[i].name+'L').text(String((d[i].light*100)) + '%');
+            }
+        });
+    }
+
+    function listen(){
+        console.log('getting sensor vals');
+        console.log('connecting...');
+        io.socket.get("/sensors/updates");
+        io.socket.on('connect',function(message){
+            console.log('connected!');
+            io.socket.on('message',function(message){
+                console.log(JSON.stringify(message));
+                getSensors();
+            });
+        });
+    }
+</script>
+<body onload="listen()">
 <div id="cont">
-    <div class="room" id="br1">
-        <div style="height: 100px"></div>
+    <div class="room" id="bedroom1">
+        <div style="height: 80px"></div>
         <span class="roomName">Bedroom1</span><br>
-        <span class="icon-temperatire">25ºC</span><br>
-        <span class="icon-lightbulb">40%</span>
+        <span id="bedroom1T" class="icon-temperatire">25ºC</span><br>
+        <span id="bedroom1L" class="icon-lightbulb">40%</span><br>
+        <span id="bedroom1H" class="icon-fire-station"></span>
     </div>
-    <div class="room" id="br2">
-        <div style="height: 60px"></div>
+    <div class="room" id="bedroom2">
+        <div style="height: 45px"></div>
         <span class="roomName">Bedroom2</span><br>
-        <span class="icon-temperatire">25ºC</span><br>
-        <span class="icon-lightbulb">40%</span>
+        <span id="bedroom2T" class="icon-temperatire">25ºC</span><br>
+        <span id="bedroom2L" class="icon-lightbulb">40%</span><br>
+        <span id="bedroom2H" class="icon-fire-station"></span>
     </div>
     <div class="room" id="bathroom">
-        <div style="height: 25px"></div>
+        <div style="height: 10px"></div>
         <span class="roomName">Bathroom</span><br>
-        <span class="icon-temperatire">25ºC</span><br>
-        <span class="icon-lightbulb">40%</span>
+        <span id="bathroomT" class="icon-temperatire">25ºC</span><br>
+        <span id="bathroomL" class="icon-lightbulb">40%</span><br>
+        <span id="bathroomH" class="icon-fire-station"></span>
     </div>
-    <div class="room" id="hall">
+    <div class="room" id="corridor">
         <div style="height: 225px"></div>
-        <span class="roomName" >Hall</span><br>
-        <span class="icon-temperatire">25ºC</span>
-        <span class="icon-lightbulb">40%</span>
+        <span class="roomName">Hall</span><br>
+        <span id="corridorT" class="icon-temperatire">25ºC</span> 
+        <span id="corridorL" class="icon-lightbulb">40%</span> 
+        <span id="corridorH" class="icon-fire-station"></span>
     </div>
     <div class="room" id="kitchen">
-        <div style="height: 25px"></div>
+        <div style="height: 5px"></div>
         <span class="roomName">Kitchen</span><br>
-        <span class="icon-temperatire">25ºC</span><br>
-        <span class="icon-lightbulb">40%</span>
+        <span id="kitchenT" class="icon-temperatire">25ºC</span><br>
+        <span id="kitchenL" class="icon-lightbulb">40%</span><br>
+        <span id="kitchenH" class="icon-fire-station"></span>
     </div>
-    <div class="room" id="lr">
-        <div style="height: 200px"></div>
+    <div class="room" id="livingroom">
+        <div style="height: 180px"></div>
         <span class="roomName">LivingRoom</span><br>
-        <span class="icon-temperatire">25ºC</span><br>
-        <span class="icon-lightbulb">40%</span>
+        <span id="livingroomT" class="icon-temperatire">25ºC</span><br>
+        <span id="livingroomL" class="icon-lightbulb">40%</span><br>
+        <span id="livingroomH" class="icon-fire-station"></span>
     </div>
 </div>
 
@@ -50,6 +96,15 @@
             opacity: 1,
             marginTop: "50px"
         },300);
+        getSensors();
     },400);
+
+    function toggleLights(room){
+        $('#'+room).toggleClass('roomOn');
+    }
+
+    $('.room').click(function(){
+        $(this).toggleClass('roomOn');
+    })
 </script>
 </body>

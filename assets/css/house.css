@@ -43,6 +43,14 @@ body {
     box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.4);
 }
 
+.roomOn {
+    background-color: #F7FB9E!important;
+}
+
+.roomOn:hover {
+    background-color: #FBFDD2!important;
+}
+
 .roomName {
     font-size: 28px;
     font-weight: 300;
@@ -51,14 +59,14 @@ body {
     text-decoration: underline;
 }
 /* Styles for rooms */
-#br1 {
+#bedroom1 {
     width: 210px;
     height: 350px;
     margin: 0 0 0 0;
     position: absolute;
     z-index: 6;
 }
-#br2 {
+#bedroom2 {
     width: 350px;
     height: 280px;
     margin: 350px 0 0 0;
@@ -72,7 +80,7 @@ body {
     position: absolute;
     z-index: 10;
 }
-#hall {
+#corridor {
     width: 420px;
     height: 350px;
     margin: 0 0 0 210px;
@@ -86,10 +94,14 @@ body {
     position: absolute;
     z-index: 3;
 }
-#lr {
+#livingroom {
     width: 560px;
     height: 420px;
     margin: 210px 0 0 350px;
     position: absolute;
     z-index: 1;
+}
+
+.icon-fire-station {
+    color:#B83C3C;
 }
