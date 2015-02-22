@@ -47,6 +47,13 @@ module.exports = {
 			Sensors.subscribe(req.socket, ret);
 			return res.send('socket subscribed: ' + req.socket.id);
 		});
+	},
+	incTemp: function(req,res){
+		//setTimeout(function(){
+			Rooms.find({'appl':{'heat':{'state':1}}}).exec(function(err,ret){
+				return res.send(ret);
+			});
+		//},5000);
 	}
 };
 

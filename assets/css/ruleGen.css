@@ -24,6 +24,11 @@ body {
     z-index: 10;
 }
 
+#ruleList {
+    padding: 0 20px 20px 0;
+    overflow: scroll;
+}
+
 #cont2 {
     width: 0px;
     height: 630px;

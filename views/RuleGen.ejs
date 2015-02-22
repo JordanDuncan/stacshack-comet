@@ -11,6 +11,7 @@
 	</div>
 	<div style="clear:both"></div>
 	<a class="btn-floating btn-large waves-effect waves-light teal" style="float: right; margin: -30px 20px -30px 0" href="javascript:toggleTray()"><i class="mdi-content-add"></i></a>
+	<div id="ruleList"></div>
 </div>
 <div id="cont2">
 	<div id="headBar">
@@ -159,7 +160,21 @@
 		$.get('../../rules/create?room='+room+'&checks='+checks+'&min='+min+'&max='+max+'&cmd='+cmdStr, function(d){
 			alert(JSON.stringify(d));
 		});
+	}
 
+	function listRules(){
+		$.get('../../rules/', function(d){
+
+			alert(JSON.stringify(d));
+			for(var i in d){
+				var cmd = '';
+				for(var j in d[i].ops[0]){
+					cmd += d[i].ops[0][j] + ' ';
+				}
+				$('#ruleList').append('<p><b>'+d[i].room+'</b><br>');
+				$('#ruleList').append('If '+String(d[i].terms[0].min)+' < '+d[i].terms[0].check+' val < '+String(d[i].terms[0].max)+', run command <b>'+cmd+'</b>.</p>');
+			}
+		});
 	}
 		
 </script>
