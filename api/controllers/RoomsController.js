@@ -27,6 +27,13 @@ module.exports = {
                 });
             });
         }
+    },
+    updates: function(req,res) {
+        sails.log(req.socket);
+        Rooms.find({}).exec(function(err,ret){
+            Rooms.subscribe(req.socket, ret);
+            return res.send('socket subscribed: ' + req.socket.id);
+        });
     }
 };
 

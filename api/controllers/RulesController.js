@@ -125,12 +125,25 @@ module.exports = {
 
 			var retArr = [];
 			
-			var type = req.query.type;
-			
-			for(var i in ret){
-				sails.log(JSON.stringify(ret));
-				var isIn = (ret[i].perms.indexOf(type)>-1);
-				if(isIn){
+			if(req.query.type){
+
+				var type = req.query.type;
+				
+				for(var i in ret){
+					sails.log(JSON.stringify(ret));
+					var isIn = (ret[i].perms.indexOf(type)>-1);
+					if(isIn){
+						for(var j in ret[i].terms){
+							checkAndMod[ret[i].terms[j].check](ret[i].room, ret[i].terms[j], ret[i].ops, function(newRet){
+								sails.log(JSON.stringify(newRet));
+								return res.send(newRet);
+							});
+						}
+					}
+				}
+			} else {
+				for(var i in ret){
+					sails.log(JSON.stringify(ret));
 					for(var j in ret[i].terms){
 						checkAndMod[ret[i].terms[j].check](ret[i].room, ret[i].terms[j], ret[i].ops, function(newRet){
 							sails.log(JSON.stringify(newRet));

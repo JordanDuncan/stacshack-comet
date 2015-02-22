@@ -8,8 +8,6 @@
 module.exports = {
 	externalLight: function(req,res){
         House.findOne({}).exec(function(err,ret){
-            var d = ret;
-
             if(req.query.set){
                 var dUpdate = {
                     externalLight: parseFloat(req.query.set)
@@ -19,7 +17,7 @@ module.exports = {
                     return res.send(ret);
                 });
             } else {
-                return res.send({'value':d.externalLight});
+                return res.send({'value':ret});
             }
         });
     },

@@ -7,8 +7,9 @@
 
 module.exports = {
 	running: function(req,res){
-        return House.externalLight(req,res);
-        return res.send(sails.controllers.house);
+        setInterval(function(){
+            sails.controllers.rules.update(req,res);
+        },3000)
     }
 };
 
