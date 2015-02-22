@@ -18,7 +18,7 @@ The application uses a RESTful API to update the attributes of each room and dis
 
 API calls are GET requests to URLs of the form:
 
-`/rules/api?cmd=arg1,arg2,arg3`
+`/rules/api?cmd=room,attribute,value`
 
 For example,
 
