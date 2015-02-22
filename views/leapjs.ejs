@@ -65,7 +65,26 @@ THE SOFTWARE.
   Leap.loop({
 
   hand: function(hand){
-    console.log( hand.screenPosition() );
+
+  	if (hand.pinchStrength >= 0.95) {
+  		console.log( "PINCH!!!" );
+  		if ( hand.palmVelocity[1] > 200 ){
+  			console.log("UP PINCH");
+  		}
+  		else if ( hand.palmVelocity[1] < -200 ) {
+  			console.log("DOWN PINCH");
+  		}
+  		if ( hand.palmVelocity[0] > 200 ){
+  			console.log("RIGHT PINCH");
+  		}
+  		else if ( hand.palmVelocity[0] < -200 ){
+  			console.log("LEFT PINCH");
+  		}
+
+  	}
+  	// console.log( hand.pinchStrength );
+    // console.log( hand.screenPosition() );
+    // console.log( hand.palmVelocity );
   }
 
 }).use('screenPosition');
