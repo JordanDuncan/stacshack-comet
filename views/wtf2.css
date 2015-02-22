@@ -1,9 +1,11 @@
-		#left{
-		float:left;
-		width:25%;
-		overflow:hidden;
-		}
-		#right{
-		overflow:hidden;
-		}
-		The HTML is simple, two left and right div in a wrapper div.
+body {
+background-color:#009688
+}
+#left{
+	float:left;
+	width:25%;
+	overflow:hidden;
+}
+#right{
+	overflow:hidden;
+}

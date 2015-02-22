@@ -45,7 +45,22 @@
 		
 		<div id="blah">
 		<div id="left">
-		<h4>Choose element:</h4><br>
+			<h4>Choose element:</h4>
+		    <ul class="general_menu">
+
+			<li id="temperatureIcon" onClick="pageTracker._trackPageview('/menu/sobre');"><a href="?pg=sobre" title="Temperature" class="mn_sobre" onClick="return false;">Temperature</a></li>
+
+			<li id="lightIcon" onClick="pageTracker._trackPageview('/menu/habilidades');"><a href="?pg=habilidades" title="Light" class="mn_habilidades" onClick="return false;">Light</a></li>
+
+     
+			<li id="timeIcon" onClick="pageTracker._trackPageview('/menu/clientes');"><a href="?pg=clientes" title="Time" class="mn_clientes" onClick="return false;">Time</a></li>
+
+		</ul>
+		
+		
+		
+	
+	
 		Temperature now:<br>
 		#insert temp here<br>
 		
@@ -59,19 +74,22 @@
 		<div id="right">
 			<section>
 				<h1>Room</h1>
-
+				
+				Select room:<br>
 				<select id="room">
-				</select><br>
+				</select>
+				<br><br>
+				Select variable:<br>
 				<select id="check">
 				  <option value="time">Time</option>
 				  <option value="light">Light</option>
 				  <option value="temp">Temperature</option>
 				</select>
-
-				<br>MinimumValue:<br>
-				<input type="text" name="Minimum Value" value="0"><br><br>
-				MaximumValue:<br>
-				<input type="text" name="Maximum Value" value="1"><br>
+				<br>
+				<br>Set minimum value:<br>
+				<input type="text" name="MinimumValue" value="0"><br><br>
+				Set maximum value:<br>
+				<input type="text" name="MaximumValue" value="1"><br>
 				Command:<br>
 				<input type="button" value="Submit">
 				</section>
@@ -81,10 +99,5 @@
 
 		</div>
 		</div>
-
-		<footer>
-			Copyright © team C.O.M.E.T
-		</footer>
-
 	</body>	
 </html>
