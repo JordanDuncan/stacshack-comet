@@ -102,6 +102,25 @@ var checkAndMod = {
 };
  
 module.exports = {
+	api: function(req,res){
+		var ops = req.query.cmd.split(',');
+		Rooms.findOne({name: ops[0]}).exec(function(err,ret){
+            if(err) return res.send(err);
+
+            sails.log(JSON.stringify(ret));
+            
+            var newRet = JSON.parse(JSON.stringify(ret));
+            newRet.appl[ops[1]].state = parseFloat(ops[2]);
+
+            sails.log(JSON.stringify(newRet));
+            
+            Rooms.update({name: ops[0]}, newRet).exec(function(err,ret){
+                if(err) return res.send(err);
+                sails.sockets.blast(ret);
+                return res.send(ret);
+            });
+        });
+	},
 	create: function(req,res){
 		var thisObj = {
 			room: req.query.room,
@@ -153,6 +172,13 @@ module.exports = {
 				}
 			}
 			
+		});
+	},
+	updates: function(req,res) {
+		sails.log(req.socket);
+		Rooms.find({}).exec(function(err,ret){
+			Rooms.subscribe(req.socket, ret);
+			return res.send('socket subscribed: ' + req.socket.id);
 		});
 	}
 };

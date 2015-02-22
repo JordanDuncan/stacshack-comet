@@ -1,0 +1,247 @@
+<link type="text/css" href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
+<link type="text/css" href='../css/materialize.min.css' rel='stylesheet'/>
+<link type="text/css" href='../css/comet.css' rel='stylesheet'/>
+<link type="text/css" href='../css/house.css' rel='stylesheet'/>
+<link type="text/css" href="../css/jquery.fullPage.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"> </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script src="../js/materialize.min.js" type="text/javascript"> </script>
+<script type="text/javascript" src="../js/jquery.fullPage.js"></script>
+<script src="//js.leapmotion.com/leap-0.6.2.js"></script>
+<script src="//js.leapmotion.com/leap-plugins-0.1.6.1.js"></script>
+<script type="text/javascript">
+    var thisPage = 'livingroom';
+    var pages = ['livingroom','bedroom1', 'bedroom2', 'bathroom','kitchen','corridor'];
+    var settings = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+
+    function getSensors(){
+        $.get('../sensors',function(d){
+            for(var i in d){
+                if(d[i].name == 'time'){
+                    //$('#globaltime').val(String(d[i]['time']));
+                    continue;
+                }
+                $('#'+d[i].name+'T').text(String(d[i].temp) + 'ºC');
+                $('#'+d[i].name+'L').text(String((d[i].light*100)) + '%');
+            }
+            getAppl();
+        });
+    }
+
+    function getAppl(){
+        $.get('../rooms',function(d){
+            for(var i in d){
+                if(d[i].appl.heat.state == 1){
+                    $('#'+d[i].name+'H').css('color','#B83C3C');
+                } else {
+                    $('#'+d[i].name+'H').css('color','#DDD');
+                }
+
+                if(d[i].appl.light.state == 1){
+                    $('#'+d[i].name).css('background-color','#F7FB9E');
+                } else {
+                    $('#'+d[i].name).css('background-color','#EEE');
+                }
+            }
+        });
+    }
+
+    function listen(){
+        console.log('getting sensor vals');
+        console.log('connecting...');
+        io.socket.get("/sensors/updates");
+        io.socket.on('connect',function(message){
+            console.log('connected!');
+            io.socket.on('message',function(message){
+                console.log(JSON.stringify(message));
+                getSensors();
+            });
+        });
+    }
+
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+            sectionsColor: ['#333'],
+            anchors: ['firstPage'],
+            scrollingSpeed: 1000,
+            onSlideLeave: function( anchorLink, index, slideIndex, direction){
+                var leavingSlide = $(this);
+
+                var opts = {
+                    'right': 1,
+                    'left' : -1
+                }
+
+                var newIndex = slideIndex + opts[direction];
+                thisPage = pages[newIndex];
+
+                console.log(thisPage);
+            }
+        });
+    });
+</script>
+<body onload="listen()">
+<div id="fullpage">
+    <div class="section" id="section1">
+        <div class="slide">
+            <div class="H" id="livingroomH">
+                <div class="pad">
+                    <span class="icon-fire-station"></span>
+                </div>
+            </div>
+            <div class="mid">livingroom</div>
+            <div class="L" id="livingroomL">
+                <div class="pad">
+                    <span class="icon-lightbulb"></span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="H" id="bedroom1H">
+                <div class="pad">
+                    <span class="icon-fire-station"></span>
+                </div>
+            </div>
+            <div class="mid">bedroom1</div>
+            <div class="L" id="bedroom1L">
+                <div class="pad">
+                    <span class="icon-lightbulb"></span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="H" id="bedroom2H">
+                <div class="pad">
+                    <span class="icon-fire-station"></span>
+                </div>
+            </div>
+            <div class="mid">bedroom2</div>
+            <div class="L" id="bedroom2L">
+                <div class="pad">
+                    <span class="icon-lightbulb"></span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="H" id="bathroomH">
+                <div class="pad">
+                    <span class="icon-fire-station"></span>
+                </div>
+            </div>
+            <div class="mid">bathroom</div>
+            <div class="L" id="bathroomL">
+                <div class="pad">
+                    <span class="icon-lightbulb"></span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="H" id="kitchenH">
+                <div class="pad">
+                    <span class="icon-fire-station"></span>
+                </div>
+            </div>
+            <div class="mid">kitchen</div>
+            <div class="L" id="kitchenL">
+                <div class="pad">
+                    <span class="icon-lightbulb"></span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="H" id="corridorH">
+                <div class="pad">
+                    <span class="icon-fire-station"></span>
+                </div>
+            </div>
+            <div class="mid">corridor</div>
+            <div class="L" id="corridorL">
+                <div class="pad">
+                    <span class="icon-lightbulb"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  var loopnum = 0;
+  var lastResult = 0;
+  var running = false;
+
+  Leap.loop({
+
+  hand: function(hand){
+
+    // 0 up, 1 down, 2 right, 3 left
+
+    if (hand.pinchStrength >= 0.95) {
+        // console.log( "PINCH!!!" );
+        if ( hand.palmVelocity[1] > 200 ){
+            // console.log("UP PINCH");
+            if (lastResult == 0) {
+                loopnum += 1;
+            } else {
+                loopnum = 0;
+            }
+            lastResult = 0;
+        }
+        else if ( hand.palmVelocity[1] < -200 ) {
+            // console.log("DOWN PINCH");
+            if (lastResult == 1) {
+                loopnum += 1;
+            } else {
+                loopnum = 0;
+            }
+            lastResult = 1;
+        }
+        if ( hand.palmVelocity[0] > 200 ){
+            // console.log("RIGHT PINCH");
+            if (lastResult == 2) {
+                loopnum += 1;
+            } else {
+                loopnum = 0;
+            }
+            lastResult = 2;
+        }
+        else if ( hand.palmVelocity[0] < -200 ){
+            // console.log("LEFT PINCH");
+            if (lastResult == 3) {
+                loopnum += 1;
+            } else {
+                loopnum = 0;
+            }
+            lastResult = 3;
+        }
+
+        if (loopnum == 8 && !running) {
+            if(lastResult == 3){
+                $.fn.fullpage.moveSlideRight();
+            } else if(lastResult == 2){
+                $.fn.fullpage.moveSlideLeft();
+            } else if(lastResult == 1){
+                //lightingtoggle
+                console.log('down');
+                $('#'+thisPage+'L').toggleClass('lOn');
+            } else if(lastResult == 0){
+                //heating toggle
+                console.log('up');
+                $('#'+thisPage+'H').toggleClass('hOn');
+            }
+
+            running = true;
+            loopnum = 0;
+        }
+
+    } else {
+        running = false;
+    }
+
+    // console.log( hand.pinchStrength );
+    // console.log( hand.screenPosition() );
+    // console.log( hand.palmVelocity );
+  }
+
+}).use('screenPosition');
+</script>
+</body>

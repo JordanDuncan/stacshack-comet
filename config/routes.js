@@ -52,6 +52,10 @@ module.exports.routes = {
     view: 'ruleGen'
   },
 
+  '/thermostat': {
+    view: 'thermo'
+  },
+
   'get /ihouse': 'SensorsController.ihouse',
 
   'get /userGet': 'UserController.test'
