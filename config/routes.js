@@ -40,6 +40,10 @@ module.exports.routes = {
     view: 'house'
   },
 
+  '/leap': {
+    view: 'leapjs'
+  },
+
   '/debug': {
     view: 'debug'
   },

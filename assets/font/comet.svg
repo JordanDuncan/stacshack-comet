@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2015 by original authors @ fontello.com</metadata>
+<defs>
+<font id="comet" horiz-adv-x="1000" >
+<font-face font-family="comet" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="temperatire" unicode="&#xe800;" d="m286 190q34-8 57-36t22-64q0-42-31-73t-74-32-73 31-31 74q0 37 23 64t56 36l0 290q0 10 8 18t17 9 18-9 8-18l0-290z m157 84q78-79 78-184 0-107-77-184t-184-77-184 77-76 184q0 107 78 184l0 415q0 75 53 129t129 54 129-54 54-129l0-415z m-183-340q65 0 111 46t45 110q0 88-77 134l0 465q0 31-23 54t-56 24-55-24-22-54l0-465q-79-46-79-134 0-65 45-110t111-46z" horiz-adv-x="521" />
+<glyph glyph-name="lightbulb" unicode="&#xe801;" d="m390 663q64 0 109-45t46-110q0-11-7-18t-19-8-19 8-7 18q0 43-30 73t-73 30q-25 0-25 26t25 26z m0-860q-21 0-36 16t-15 37l-104 0q-21 0-37 15t-15 37l0 157q0 31-23 76t-90 142q-70 97-70 224 0 161 114 276t276 114 276-114 115-276q0-121-71-224-67-96-89-140t-22-78l0-157q0-21-15-37t-36-15l-105 0q0-22-16-37t-37-16z m105 156l0 53-209 0 0-53 209 0z m130 383q53 76 53 165 0 118-85 202t-203 84q-117 0-202-84t-84-202q0-87 52-164 107-155 124-227l59 0 0 105q0 21 15 36t36 15 37-15 16-36l0-105 57 0q16 71 125 226z" horiz-adv-x="781" />
+<glyph glyph-name="fire-station" unicode="&#xe802;" d="m425 775l-175-250-100 150c-33-58-150-200-150-350 0-221 204-400 425-400 221 0 425 179 425 400 0 150-117 292-150 350l-100-150z m0-400s175-134 175-250c0-50-75-100-175-100s-175 50-175 100c0 112 175 250 175 250z" horiz-adv-x="850" />
+<glyph glyph-name="flash" unicode="&#xe803;" d="m598 349q23-12 26-39t-16-45l-391-370q-14-14-35-14-28 0-43 24t-6 49l113 270-220 128q-22 12-25 38t15 45l391 370q11 14 35 14 21 0 37-16t15-36q0-13-5-23l-111-267z" horiz-adv-x="624" />
+</font>
+</defs>
+</svg>
