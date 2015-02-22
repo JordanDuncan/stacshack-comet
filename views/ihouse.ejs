@@ -3,21 +3,36 @@
 		Interactive house
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript">
-			window.onload = function subscribeAndListen(){
-			// When the document loads, send a request to users.testSocket
-			// The controller code will subscribe you to all of the 'users' model instances (records)
-				socket.get('/sensors');
-
-				// Listen for the event called 'user'
-				socket.on('sensors',function(obj){
-					alert(JSON.stringify(obj));
-				};
-				});
+			var matches = {
+				"livingroom":"lr",
+				"bathroom":"bath",
+				"kitchen":"kitchen",
+				"bedroom1":"br1",
+				"bedroom2":"br2",
+				"corridor":"corr",
 			};
+			function popBoxes(){
+				$.get('../sensors',function(d) {
+					for(var i in d){
+						if(d[i].name == 'time'){
+							$('#globaltime').val(String(d[i]['time']));
+							continue;
+						}
+						$('#'+matches[d[i].name]+'Temp').val(String(d[i].temp));
+						$('#'+matches[d[i].name]+'Light').val(String(d[i].light));
+					}
+				});
+			}
 
-			function fillVals(){
-				$.get("../sensors",function(data) {
-					alert(JSON.stringify(data));
+			function listen(){
+				console.log('connecting...');
+				io.socket.get("/sensors/updates");
+				io.socket.on('connect',function(message){
+					console.log('connected!');
+					io.socket.on('message',function(message){
+						console.log(JSON.stringify(message));
+						popBoxes();
+					});
 				});
 			}
 
@@ -47,7 +62,7 @@
 				var timeMins = timeStringToNum($('#globaltime').val());
 				alert(timeMins);
 				var urlT = "../sensors/changeTime?timeIn=" + timeMins;
-				$.get(urlT,function(dataT) {
+				$.get(urlT,function(dataT){
 					alert(dataT);
 				});
 			}
@@ -55,7 +70,7 @@
 		</script>
 
 	</head>
-	<body onload="fillVals()">
+	<body onload="listen()">
 		<p>
 			Living room <br>
 			  Light: <input type="text" id="lrLight"><br>

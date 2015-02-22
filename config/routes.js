@@ -44,9 +44,7 @@ module.exports.routes = {
     view: 'debug'
   },
 
-  '/ihouse': {
-    view: 'ihouse'
-  },
+  'get /ihouse': 'SensorsController.ihouse',
 
   'get /userGet': 'UserController.test'
 
