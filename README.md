@@ -1,21 +1,11 @@
-#app name
+#Ravenswood
 ###STACShack 2015
-**Team C.O.M.E.T (@JrdnDncn, @NikkPavlov, @ScottMax_)**
+**Team C.O.M.E.T. (@JrdnDncn, @NikkPavlov, @ScottMax_)**
 
-This is our empty readme file...
+Home Automation System, augmented by Leap Motion controls.
 
-##Todo List
-####Critical
+Technologies:
 
-####High Priority
-- House config settings screen
-- rooms predefined
-- appls predefined
-- rule generator
-- sensor modifier
-- virtual light/heat changes
-
-####Low Priority
-- appliance state changer
-
-####Trivial
+- Node.js
+- Sails.js
+- LeapJS
