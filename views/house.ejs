@@ -23,15 +23,15 @@
         $.get('../rooms',function(d){
             for(var i in d){
                 if(d[i].appl.heat.state == 1){
-                    $('#'+d[i].name+'H').css('color','#B83C3C!important');
+                    $('#'+d[i].name+'H').css('color','#B83C3C');
                 } else {
-                    $('#'+d[i].name+'H').css('color','#DDD!important');
+                    $('#'+d[i].name+'H').css('color','#DDD');
                 }
 
                 if(d[i].appl.light.state == 1){
-                    $('#'+d[i].name).css('background-color','#F7FB9E!important');
+                    $('#'+d[i].name).css('background-color','#F7FB9E');
                 } else {
-                    $('#'+d[i].name).css('background-color','#EEE!important');
+                    $('#'+d[i].name).css('background-color','#EEE');
                 }
             }
         });
