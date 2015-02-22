@@ -19,16 +19,19 @@ function httpReq(type, url, callback){
  
 var checkAndMod = {
 	'time': function(terms,ops){
-		//get system time, compare with conditions
 		var condMet = false;
 		
-		if(condMet){
-			httpReq("GET", "../../rooms/update?ops="+JSON.stringify(ops), function(){
-		    	return true;
-		    })
-		} else {
-			return false;
-		}
+		Sensor.findOne({name:'time'}).exec(funtion(err,ret){
+			if(ret.time > terms.min && ret.time < terms.max) condMet = true; 
+			
+			if(condMet){
+				httpReq("GET", "../../rooms/update?ops="+JSON.stringify(ops), function(){
+					return true;
+				})
+			} else {
+				return false;
+			}
+		});		
 	},
 	'temp': function(terms,ops){
 		Sensor.findOne({name:terms.room}).exec(function(err,ret){
