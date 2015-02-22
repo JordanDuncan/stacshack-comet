@@ -62,26 +62,65 @@ THE SOFTWARE.
 
   
   <script type="text/javascript">
+  var loopnum = 0;
+  var lastResult = 0;
+  var running = false;
+
   Leap.loop({
 
   hand: function(hand){
 
+  	// 0 up, 1 down, 2 right, 3 left
+
   	if (hand.pinchStrength >= 0.95) {
-  		console.log( "PINCH!!!" );
+  		// console.log( "PINCH!!!" );
   		if ( hand.palmVelocity[1] > 200 ){
-  			console.log("UP PINCH");
+  			// console.log("UP PINCH");
+  			if (lastResult == 0) {
+  				loopnum += 1;
+  			} else {
+  				loopnum = 0;
+  			}
+  			lastResult = 0;
   		}
   		else if ( hand.palmVelocity[1] < -200 ) {
-  			console.log("DOWN PINCH");
+  			// console.log("DOWN PINCH");
+  			if (lastResult == 1) {
+  				loopnum += 1;
+  			} else {
+  				loopnum = 0;
+  			}
+  			lastResult = 1;
   		}
   		if ( hand.palmVelocity[0] > 200 ){
-  			console.log("RIGHT PINCH");
+  			// console.log("RIGHT PINCH");
+  			if (lastResult == 2) {
+  				loopnum += 1;
+  			} else {
+  				loopnum = 0;
+  			}
+  			lastResult = 2;
   		}
   		else if ( hand.palmVelocity[0] < -200 ){
-  			console.log("LEFT PINCH");
+  			// console.log("LEFT PINCH");
+  			if (lastResult == 3) {
+  				loopnum += 1;
+  			} else {
+  				loopnum = 0;
+  			}
+  			lastResult = 3;
   		}
 
+  		if (loopnum == 8 && !running) {
+  			running = true;
+  			console.log('do stuff for ' + String(lastResult));
+  			loopnum = 0;
+  		}
+
+  	} else {
+  		running = false;
   	}
+
   	// console.log( hand.pinchStrength );
     // console.log( hand.screenPosition() );
     // console.log( hand.palmVelocity );
