@@ -21,7 +21,7 @@ var checkAndMod = {
 	'time': function(terms,ops){
 		var condMet = false;
 		
-		Sensor.findOne({name:'time'}).exec(funtion(err,ret){
+		Sensor.findOne({name:'time'}).exec(function(err,ret){
 			if(ret.time > terms.min && ret.time < terms.max) condMet = true; 
 			
 			if(condMet){
