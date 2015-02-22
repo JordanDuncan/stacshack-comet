@@ -25,6 +25,8 @@
 			}
 
 			function listen(){
+				console.log('getting sensor vals');
+				popBoxes();
 				console.log('connecting...');
 				io.socket.get("/sensors/updates");
 				io.socket.on('connect',function(message){
