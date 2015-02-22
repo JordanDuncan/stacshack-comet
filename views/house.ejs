@@ -46,6 +46,7 @@
             io.socket.on('message',function(message){
                 console.log(JSON.stringify(message));
                 getSensors();
+                getAppl();
             });
         });
     }
@@ -108,6 +109,10 @@
         },300);
         getSensors();
     },400);
+
+    setInterval(function(){
+        getAppl();
+    },2000);
 
     function toggleLights(room){
         $('#'+room).toggleClass('roomOn');

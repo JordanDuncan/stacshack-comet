@@ -46,6 +46,10 @@ module.exports = {
 		Sensors.find({}).exec(function(err,ret){
 			Sensors.subscribe(req.socket, ret);
 			return res.send('socket subscribed: ' + req.socket.id);
+			Rooms.find({}).exec(function(err,ret){
+				Rooms.subscribe(req.socket, ret);
+				return res.send('socket subscribed: ' + req.socket.id);
+			});
 		});
 	},
 	incTemp: function(req,res){

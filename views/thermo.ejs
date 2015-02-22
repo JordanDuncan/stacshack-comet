@@ -221,10 +221,30 @@
                 $.fn.fullpage.moveSlideLeft();
             } else if(lastResult == 1){
                 //lightingtoggle
+                var num = pages.indexOf(thisPage);
+                if (settings[num][0] == 0) {
+                    $.get('../rules/api?cmd='+thisPage+',light,1',function(d){
+                        settings[num][0] = 1;
+                    });
+                } else {
+                    $.get('../rules/api?cmd='+thisPage+',light,0',function(d){
+                        settings[num][0] = 0;
+                    });
+                }
                 console.log('down');
                 $('#'+thisPage+'L').toggleClass('lOn');
             } else if(lastResult == 0){
                 //heating toggle
+                var num = pages.indexOf(thisPage);
+                if (settings[num][1] == 0) {
+                    $.get('../rules/api?cmd='+thisPage+',heat,1',function(d){
+                        settings[num][1] = 1;
+                    });
+                } else {
+                    $.get('../rules/api?cmd='+thisPage+',heat,0',function(d){
+                        settings[num][1] = 0;
+                    });
+                }
                 console.log('up');
                 $('#'+thisPage+'H').toggleClass('hOn');
             }
