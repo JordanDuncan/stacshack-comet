@@ -27,3 +27,11 @@ GET /rules/api?cmd=livingroom,light,0
 // This sets the light level in room "livingroom" to zero (off).
 ```
 
+###Leap Motion Controls
+
+To control and adjust the temperature/lighting for rooms, the following controls are implemented:
+
+- Make a pinching gesture with either hand
+- While maintaining this pinching gesture, swipe your hand to the left or right to adjust the currently selected room
+- To toggle the heating on or off, move your hand up while pinching (as if adjusting a slider)
+- To toggle the light on or off, move your hand down while pinching (as if pulling a light switch)
