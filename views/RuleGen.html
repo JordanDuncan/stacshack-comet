@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="wtf2.css">
+		<style>
+			#header {
+				background-color:black;
+				color:white;
+				text-align:center;
+				padding:5px;
+			}
+			#nav {
+				line-height:30px;
+				background-color:#eeeeee;
+				height:300px;
+				width:100px;
+				float:left;
+				padding:5px;	      
+			}
+			#section {
+				width:350px;
+				float:left;
+				padding:10px;	 	 
+			}
+			#footer {
+				background-color:black;
+				color:white;
+				clear:both;
+				text-align:center;
+			   padding:5px;	 	 
+			}
+		</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+				
+	</head>
+	<body>
+		<div class="container">
+
+		<div class="jumbotron">
+		  <h1>iHouse Rule Setter</h1> 
+		  <p>Welcome home!<p> 
+		</div>
+		
+		
+		<div id="blah">
+		<div id="left">
+		<h4>Choose element:</h4><br>
+		Temperature now:<br>
+		#insert temp here<br>
+		
+		Light now:<br>
+		#insert light here<br>
+		
+		Time now:<br>
+		#insert time here<br>
+		</div> 
+		
+		<div id="right">
+			<section>
+				<h1>Room</h1>
+
+				<select id="room">
+				</select><br>
+				<select id="check">
+				  <option value="time">Time</option>
+				  <option value="light">Light</option>
+				  <option value="temp">Temperature</option>
+				</select>
+
+				<br>MinimumValue:<br>
+				<input type="text" name="Minimum Value" value="0"><br><br>
+				MaximumValue:<br>
+				<input type="text" name="Maximum Value" value="1"><br>
+				Command:<br>
+				<input type="button" value="Submit">
+				</section>
+		
+		</div>
+
+
+		</div>
+		</div>
+
+		<footer>
+			Copyright © team C.O.M.E.T
+		</footer>
+
+	</body>	
+</html>
